@@ -2,6 +2,8 @@ const express = require('express');
 
 
 const expressConfig = require('./config/express');
+require('./config/database');
+
 
 const port = process.env.PORT || 3023;
 const app = express();
