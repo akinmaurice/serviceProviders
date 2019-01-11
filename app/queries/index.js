@@ -1,8 +1,38 @@
 const queries = {
-  createStudent: `
-        INSERT INTO student(first_name, last_name, email, date_of_birth, hobbies, photo_url, created_at, updated_at)
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id
+    getServiceProvidersByLocation: `
+        SELECT * FROM service_providers WHERE location = ?
    `,
+    getServiceProvidersByService: `
+        SELECT * FROM service_providers WHERE service = ?
+   `,
+    getServiceProviderById: `
+        SELECT * FROM service_providers WHERE id = ?
+   `,
+    getServiceProviderByEmail: `
+        SELECT * FROM service_providers WHERE email = ?
+   `,
+    getServiceProviderByPhone: `
+        SELECT * FROM service_providers WHERE phone = ?
+   `,
+    createServiceProvider: `
+        INSERT INTO service_providers(id, name, phone_number, email, service, description, rate, location)
+        VALUES(?, ?, ?, ?, ?, ?, ?, ?)
+   `,
+    updateServiceProvider: `
+        UPDATE service_providers
+        SET
+          name = ?,
+          phone_number = ?,
+          service = ?,
+          description = ?,
+          rate = ?,
+          location = ?
+        WHERE
+          id = ?
+   `,
+    deleteServiceProvider: `
+        DELETE service_providers WHERE id = ?
+   `
 };
 
 module.exports = queries;
