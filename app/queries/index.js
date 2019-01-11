@@ -32,7 +32,17 @@ const queries = {
    `,
     deleteServiceProvider: `
         DELETE service_providers WHERE id = ?
-   `
+   `,
+    getServiceByTitle: `
+        SELECT * FROM services WHERE service_title = ?
+   `,
+    getAllServices: `
+        SELECT * FROM services
+    `,
+    createService: `
+        INSERT INTO services(id, service_title, description, created_at, updated_at)
+        VALUES(?, ?, ?, ?, ?)
+    `
 };
 
 module.exports = queries;

@@ -15,4 +15,4 @@ db.connectAsync()
         logger.error(`unable to connect to Database: ${e}`);
     });
 
-module.export = db;
+module.exports = db;
