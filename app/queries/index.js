@@ -37,7 +37,7 @@ const queries = {
         SELECT * FROM services WHERE service_title = ?
    `,
     getAllServices: `
-        SELECT * FROM services
+        SELECT id, service_title, description FROM services
     `,
     createService: `
         INSERT INTO services(id, service_title, description, created_at, updated_at)
