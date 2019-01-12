@@ -7,20 +7,19 @@ Simple Node JS Service API Application.
 
 Please ensure Node JS is installed.
 
-```
 
   1.  git clone https://github.com/akinmaurice/studentApp.git
   2.  cd studentApp
   3.  Create a Mysql Database schema
-  4.  Create the necessary tables using the sql file here
+  4.  Create the necessary tables using the sql file [here](/migrations/sqls/20190111211503-add-table-up.sql)
   5.  Provide connection details to Database. Example:
-
-  export DATABASE_DEV_URL='mysql://user:password@host:port/database'
+  ```
+    export DATABASE_DEV_URL='mysql://user:password@host:port/database'
+  ```
 
 
   6.  visit http://localhost:3023 to view!
 
-```
 
 The above will get you a copy of the project up and running on your local machine for development and testing purposes.
 
