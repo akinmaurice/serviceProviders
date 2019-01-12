@@ -14,7 +14,7 @@ const { expect } = chai;
 let sandbox;
 
 
-describe('It validates all Functions to create a provider', () => {
+describe('It validates all unit Functions for Providers', () => {
     beforeEach(() => {
         sandbox = sinon.createSandbox();
     });
