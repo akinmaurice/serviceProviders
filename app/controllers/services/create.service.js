@@ -1,5 +1,6 @@
 const Q = require('q');
 const moment = require('moment');
+const slug = require('slugs');
 const uuidv1 = require('uuid/v1');
 const checkRequestBody = require('../../utils/request.body.verifier');
 const query = require('../../queries');
@@ -34,7 +35,7 @@ const checkRequest = (body) => {
 const verifyService = async(service_title) => {
     const defer = Q.defer();
     try {
-        const service = await db.queryAsync(query.getServiceByTitle, [ service_title ]);
+        const service = await db.queryAsync(query.getServiceByTitle, [ slug(service_title) ]);
         if (service.length > 0) {
             defer.reject({
                 code: 409,
@@ -65,7 +66,7 @@ const saveService = async(body) => {
             query.createService,
             [
                 uuidv1(),
-                service_title,
+                slug(service_title),
                 description,
                 moment().format('YYYY-MM-DD'),
                 moment().format('YYYY-MM-DD')
