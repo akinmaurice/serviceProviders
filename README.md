@@ -8,8 +8,8 @@ Simple Node JS Service API Application.
 Please ensure Node JS is installed.
 
 
-  1.  git clone https://github.com/akinmaurice/studentApp.git
-  2.  cd studentApp
+  1.  git clone https://github.com/akinmaurice/serviceProviders.git
+  2.  cd serviceProviders
   3.  Create a Mysql Database schema
   4.  Create the necessary tables using the sql file [here](/migrations/sqls/20190111211503-add-table-up.sql)
   5.  Provide connection details to Database. Example:
