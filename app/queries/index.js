@@ -1,23 +1,49 @@
 const queries = {
-    getServiceProvidersByLocation: `
-        SELECT * FROM service_providers WHERE location = ?
+    getProvidersByLocation: `
+        SELECT
+          providers.full_name,
+          providers.email,
+          providers.phone,
+          providers.city_location,
+          services.service_title
+        FROM
+          providers
+        LEFT JOIN provider_services ON provider_services.provider_id = providers.id
+        LEFT JOIN services ON provider_services.service_id = services.id
+        WHERE
+          providers.city_location = ?
    `,
-    getServiceProvidersByService: `
-        SELECT * FROM service_providers WHERE service = ?
+    getProvidersByService: `
+        SELECT
+        providers.full_name,
+        providers.email,
+        providers.phone,
+        providers.city_location,
+        services.service_title
+        FROM
+          providers
+        LEFT JOIN provider_services ON provider_services.provider_id = providers.id
+        LEFT JOIN services ON provider_services.service_id = services.id
+        WHERE
+          services.service_title = ?
    `,
-    getServiceProviderById: `
-        SELECT * FROM service_providers WHERE id = ?
+    getProviderById: `
+        SELECT * FROM providers WHERE id = ?
    `,
-    getServiceProviderByEmail: `
-        SELECT * FROM service_providers WHERE email = ?
+    getProviderByEmail: `
+        SELECT * FROM providers WHERE email = ?
    `,
-    getServiceProviderByPhone: `
-        SELECT * FROM service_providers WHERE phone = ?
+    getProviderByPhone: `
+        SELECT * FROM providers WHERE phone = ?
    `,
-    createServiceProvider: `
-        INSERT INTO service_providers(id, name, phone_number, email, service, description, rate, location)
-        VALUES(?, ?, ?, ?, ?, ?, ?, ?)
+    createProvider: `
+        INSERT INTO providers(id, full_name, phone, email, city_location, created_at, updated_at)
+        VALUES(?, ?, ?, ?, ?, ?, ?)
    `,
+    createProviderService: `
+        INSERT INTO provider_services(id, provider_id, service_id, created_at, updated_at)
+        VALUES(?, ?, ?, ?, ?)
+    `,
     updateServiceProvider: `
         UPDATE service_providers
         SET
@@ -38,6 +64,9 @@ const queries = {
    `,
     getAllServices: `
         SELECT id, service_title, description FROM services
+    `,
+    getServiceById: `
+        SELECT * FROM services WHERE id = ?
     `,
     createService: `
         INSERT INTO services(id, service_title, description, created_at, updated_at)

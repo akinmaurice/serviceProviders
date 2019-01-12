@@ -8,6 +8,7 @@ const FileStreamRotator = require('file-stream-rotator');
 const loggerInit = require('./logger');
 const routes = require('../app/routes/index');
 const serviceRoute = require('../app/routes/services');
+const providerRoute = require('../app/routes/providers');
 const config = require('./');
 
 
@@ -65,6 +66,7 @@ const expressConfig = (app) => {
 
     app.use('/', routes);
     app.use('/service', serviceRoute);
+    app.use('/provider', providerRoute);
 
 
     app.use((req, res, next) => {
