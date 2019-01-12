@@ -25,6 +25,6 @@ create TABLE IF NOT EXISTS provider_services (
   service_id VARCHAR(50) NOT NULL,
   created_at DATETIME NOT NULL,
   updated_at DATETIME NOT NULL,
-  FOREIGN KEY (provider_id) REFERENCES providers(id)
+  FOREIGN KEY (provider_id) REFERENCES providers(id),
   FOREIGN KEY (service_id) REFERENCES services(id)
 );
